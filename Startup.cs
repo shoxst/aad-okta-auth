@@ -36,7 +36,7 @@ namespace UserGroupRole
         options.TokenValidationParameters = new TokenValidationParameters
         {
           NameClaimType = "name",
-          RoleClaimType = "role",
+          RoleClaimType = "groups",
           ValidateIssuer = true
         };
         options.CallbackPath = Configuration["AzureAd:CallbackPath"];
