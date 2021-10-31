@@ -1,16 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
-
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <UserSecretsId>aspnet-UserGroupRole-28A5D098-E75B-4924-B807-D72DAF608F5C</UserSecretsId>
   </PropertyGroup>
-
   <ItemGroup>
-    <PackageReference Include="Bogus" Version="33.1.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.10" NoWarn="NU1605" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="5.0.10" NoWarn="NU1605" />
-    <PackageReference Include="Microsoft.Identity.Web" Version="1.18.0" />
-    <PackageReference Include="Microsoft.Identity.Web.UI" Version="1.18.0" />
+    <PackageReference Include="Bogus" Version="33.1.1"/>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="5.0.10" NoWarn="NU1605"/>
   </ItemGroup>
-
 </Project>
