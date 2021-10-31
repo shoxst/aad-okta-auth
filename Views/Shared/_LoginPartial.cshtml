@@ -1,4 +1,6 @@
-﻿@if (User.Identity.IsAuthenticated)
+﻿@using System.Security.Principal
+
+@if (User.Identity.IsAuthenticated)
 {
   <ul class="navbar-nav">
     <li>

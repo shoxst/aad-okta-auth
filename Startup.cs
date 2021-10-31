@@ -36,7 +36,7 @@ namespace UserGroupRole
         options.TokenValidationParameters = new TokenValidationParameters
         {
           NameClaimType = "name",
-          RoleClaimType = "groups",
+          RoleClaimType = "role",
           ValidateIssuer = true
         };
         options.CallbackPath = Configuration["AzureAd:CallbackPath"];
@@ -57,9 +57,13 @@ namespace UserGroupRole
         options.CallbackPath = Configuration["Okta:CallbackPath"];
         options.SignedOutCallbackPath = Configuration["Okta:SingnedOutCallbackPath"];
       });
+      
 
       services.AddAuthorization();
       services.AddControllersWithViews();
+
+      services.AddRazorPages();
+      services.AddSingleton(SampleData.Initialize());
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -88,6 +92,7 @@ namespace UserGroupRole
         endpoints.MapControllerRoute(
           name: "default",
           pattern: "{controller=Home}/{action=Index}/{id?}");
+        endpoints.MapRazorPages();
       });
     }
   }
