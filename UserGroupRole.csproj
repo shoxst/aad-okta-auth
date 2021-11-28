@@ -5,6 +5,8 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Bogus" Version="33.1.1"/>
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="5.0.10" NoWarn="NU1605"/>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="5.0.12" NoWarn="NU1605"/>
+    <PackageReference Include="Microsoft.Identity.Web" Version="1.21.0"/>
+    <PackageReference Include="Microsoft.Identity.Web.TokenCache" Version="1.21.0"/>
   </ItemGroup>
 </Project>

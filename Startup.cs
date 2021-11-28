@@ -22,6 +22,10 @@ namespace UserGroupRole
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
+      // services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
+      //           .AddMicrosoftIdentityWebApp(Configuration.GetSection("AzureAd"))
+      //           .EnableTokenAcquisitionToCallDownstreamApi(new string[]{})
+      //           .AddInMemoryTokenCaches();
       services.AddAuthentication(options =>
       {
         options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
@@ -32,13 +36,14 @@ namespace UserGroupRole
       {
         options.Authority = Configuration["AzureAd:Instance"] + Configuration["AzureAd:TenantId"] + "/v2.0";
         options.ClientId = Configuration["AzureAd:ClientId"];
-        options.ResponseType = OpenIdConnectResponseType.IdToken;
+        options.ResponseType = OpenIdConnectResponseType.IdTokenToken;
         options.TokenValidationParameters = new TokenValidationParameters
         {
           NameClaimType = "name",
           RoleClaimType = "groups",
           ValidateIssuer = true
         };
+        options.SaveTokens = true;
         options.CallbackPath = Configuration["AzureAd:CallbackPath"];
         options.SignedOutCallbackPath = Configuration["AzureAd:SingnedOutCallbackPath"];
       })
@@ -57,7 +62,6 @@ namespace UserGroupRole
         options.CallbackPath = Configuration["Okta:CallbackPath"];
         options.SignedOutCallbackPath = Configuration["Okta:SingnedOutCallbackPath"];
       });
-      
 
       services.AddAuthorization();
       services.AddControllersWithViews();
